@@ -8,24 +8,16 @@
  * @format
  */
 
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { StatusBar, StyleSheet, Text, View } from 'react-native'
+import { MainNavigator } from './src/routes/MainNavigator'
 
 const App = () => {
 	return (
-		<View style={styles.container}>
-			<StatusBar barStyle={'dark-content'} />
-			<Text>Hello World!</Text>
-		</View>
+		<NavigationContainer>
+			<MainNavigator />
+		</NavigationContainer>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center'
-	}
-})
 
 export default App
