@@ -1,6 +1,7 @@
+import { Login } from './Login'
 import { Home } from './Home'
 import { Rate } from './Rate'
 import { Search } from './Search'
 import { Word } from './Word'
 
-export { Home, Rate, Search, Word }
+export { Login, Home, Rate, Search, Word }

@@ -7,15 +7,14 @@
  *
  * @format
  */
-
-import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { MainNavigator } from './src/routes/MainNavigator'
+import { NavigationContainer } from '@react-navigation/native'
+import { MainNavigator, DrawerNavigator } from './src/routes'
 
 const App = () => {
 	return (
 		<NavigationContainer>
-			<MainNavigator />
+			<DrawerNavigator />
 		</NavigationContainer>
 	)
 }
