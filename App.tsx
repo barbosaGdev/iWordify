@@ -9,13 +9,22 @@
  */
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { MainNavigator, DrawerNavigator } from './src/routes'
+import { MainNavigator } from './src/routes'
+import { StatusBar } from 'react-native'
+import { Provider } from 'react-redux'
+import { persistor, store } from './src/store'
+import { PersistGate } from 'redux-persist/integration/react'
 
 const App = () => {
 	return (
-		<NavigationContainer>
-			<DrawerNavigator />
-		</NavigationContainer>
+		<Provider store={store}>
+			<PersistGate persistor={persistor}>
+				<NavigationContainer>
+					<StatusBar barStyle={'dark-content'} />
+					<MainNavigator />
+				</NavigationContainer>
+			</PersistGate>
+		</Provider>
 	)
 }
 

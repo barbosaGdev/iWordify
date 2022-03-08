@@ -4,7 +4,6 @@ import { View, StatusBar, Text, StyleSheet } from 'react-native'
 export const Rate = () => {
 	return (
 		<View style={styles.container}>
-			<StatusBar barStyle={'dark-content'} />
 			<Text>Rate page</Text>
 		</View>
 	)

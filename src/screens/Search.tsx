@@ -4,7 +4,6 @@ import { View, StatusBar, Text, StyleSheet } from 'react-native'
 export const Search = () => {
 	return (
 		<View style={styles.container}>
-			<StatusBar barStyle={'dark-content'} />
 			<Text>Search page</Text>
 		</View>
 	)
