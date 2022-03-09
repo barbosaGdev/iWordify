@@ -56,6 +56,9 @@ export const Home = () => {
 				renderItem={(props) => (
 					<RenderItem {...props} dimensions={dimensions} />
 				)}
+				showsHorizontalScrollIndicator={false}
+				showsVerticalScrollIndicator={false}
+				keyExtractor={(item) => item}
 				getItemLayout={getItemLayout}
 				horizontal
 			/>

@@ -1,3 +1,4 @@
 import * as authActions from './auth'
+import * as dictionaryActions from './dictionary'
 
-export { authActions }
+export { authActions, dictionaryActions }

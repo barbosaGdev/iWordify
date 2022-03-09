@@ -32,8 +32,7 @@ export const Menu: FC<MenuProps> = ({
 				>
 					<Text
 						style={{
-							marginHorizontal: 24,
-							fontSize: 24,
+							...styles.vowel,
 							color: index === indexPage ? 'white' : undefined
 						}}
 					>

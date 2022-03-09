@@ -17,8 +17,6 @@ const { Navigator, Screen } =
 export const MainNavigator: FC = () => {
 	const userToken = useSelector<DefaultRootState>((state) => state.auth.token)
 
-	console.log('userToken', userToken)
-
 	return (
 		<Navigator screenOptions={{ headerShown: false }}>
 			{!userToken ? (
