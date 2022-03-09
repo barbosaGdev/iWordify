@@ -5,13 +5,13 @@ import {
 	DrawerItem,
 	DrawerItemList
 } from '@react-navigation/drawer'
-import { Home, Search, Rate, Word } from '../screens'
+import { Home, Bookmarks, Word } from '../screens'
 import { useDispatch } from 'react-redux'
 import { signOut } from '../store/actions/auth'
 
 export type DrawerNavigatorParamsList = {
 	Home: undefined
-	Search: undefined
+	Bookmarks: undefined
 	Rate: undefined
 	Logout: undefined
 	Word: {
@@ -56,8 +56,7 @@ export const DrawerNavigator: FC = () => {
 			)}
 		>
 			<Screen name='Home' component={Home} />
-			<Screen name='Search' component={Search} />
-			<Screen name='Rate' component={Rate} />
+			<Screen name='Bookmarks' component={Bookmarks} />
 			<Screen
 				name='Word'
 				component={Word}

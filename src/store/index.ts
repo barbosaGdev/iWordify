@@ -1,13 +1,15 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import {
 	auth as authReducer,
-	dictionary as dictionaryReducer
+	dictionary as dictionaryReducer,
+	bookmark as bookmarkReducer
 } from './reducers'
 import thunk from 'redux-thunk'
 
 const rootReducers = combineReducers({
 	auth: authReducer,
-	dictionary: dictionaryReducer
+	dictionary: dictionaryReducer,
+	bookmark: bookmarkReducer
 })
 
 export type DefaultRootState = ReturnType<typeof rootReducers>

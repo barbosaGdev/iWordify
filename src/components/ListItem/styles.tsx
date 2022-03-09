@@ -5,5 +5,8 @@ export default StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		marginHorizontal: 24
+	},
+	icons: {
+		flexDirection: 'row'
 	}
 })
