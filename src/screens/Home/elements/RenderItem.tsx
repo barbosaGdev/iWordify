@@ -4,14 +4,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ListItem } from '../../../components'
 import { DefaultRootState } from '../../../store'
 import { fetchWordsByVowel } from '../../../store/actions/dictionary'
+import styles from '../styles'
 
 export type ItemProps = {
 	item: string
 	index: number
 	dimensions?: Partial<LayoutRectangle>
+	seeAboutWord: (word: string) => void
 }
 
-export const RenderItem: FC<ItemProps> = ({ item, dimensions }) => {
+export const RenderItem: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -26,8 +28,11 @@ export const RenderItem: FC<ItemProps> = ({ item, dimensions }) => {
 		<View style={{ width: dimensions?.width }}>
 			<FlatList
 				data={words}
-				renderItem={ListItem}
+				renderItem={(props) => (
+					<ListItem {...props} seeAboutWord={seeAboutWord} />
+				)}
 				keyExtractor={(item) => item}
+				ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
 			/>

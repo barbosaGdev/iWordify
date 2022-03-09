@@ -5,7 +5,7 @@ import {
 	DrawerItem,
 	DrawerItemList
 } from '@react-navigation/drawer'
-import { Home, Search, Rate } from '../screens'
+import { Home, Search, Rate, Word } from '../screens'
 import { useDispatch } from 'react-redux'
 import { signOut } from '../store/actions/auth'
 
@@ -14,6 +14,9 @@ export type DrawerNavigatorParamsList = {
 	Search: undefined
 	Rate: undefined
 	Logout: undefined
+	Word: {
+		word: string
+	}
 }
 
 const { Navigator, Screen } = createDrawerNavigator<DrawerNavigatorParamsList>()
@@ -55,6 +58,16 @@ export const DrawerNavigator: FC = () => {
 			<Screen name='Home' component={Home} />
 			<Screen name='Search' component={Search} />
 			<Screen name='Rate' component={Rate} />
+			<Screen
+				name='Word'
+				component={Word}
+				options={{
+					drawerLabel: () => null,
+					drawerIcon: () => null,
+					drawerItemStyle: { height: 0 },
+					headerShown: false
+				}}
+			/>
 		</Navigator>
 	)
 }

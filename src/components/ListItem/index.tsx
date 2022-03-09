@@ -1,13 +1,17 @@
 import React, { FC } from 'react'
 import { Text, View } from 'react-native'
-import { ItemProps } from '../../screens/Home/elements/RenderItem'
 import styles from './styles'
+import Icon from 'react-native-vector-icons/AntDesign'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { ItemProps } from '../../screens/Home/elements/RenderItem'
 
-export const ListItem: FC<ItemProps> = ({ item }) => {
+export const ListItem: FC<ItemProps> = ({ item, seeAboutWord }) => {
 	return (
 		<View style={styles.listItem}>
 			<Text>{item}</Text>
-			<Text>See</Text>
+			<TouchableOpacity onPress={() => seeAboutWord(item)}>
+				<Icon name='eye' size={18} />
+			</TouchableOpacity>
 		</View>
 	)
 }

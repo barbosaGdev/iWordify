@@ -12,23 +12,24 @@ export default StyleSheet.create({
 	button: {
 		marginTop: 12,
 		backgroundColor: 'darkblue',
-		width: 300,
+		width: 350,
 		padding: 8
 	},
 	title: {
 		fontSize: 24,
 		color: '#000',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		marginVertical: 24
 	},
 	inputs: {
 		borderWidth: 1,
 		borderColor: 'gray',
-		width: 300,
+		width: 350,
 		marginTop: 12
 	},
 	helperText: {
 		color: 'red',
-		width: 300
+		width: 350
 	},
 	buttonText: {
 		color: 'white',
