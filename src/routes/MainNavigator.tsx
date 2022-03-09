@@ -15,11 +15,14 @@ const { Navigator, Screen } =
 	createNativeStackNavigator<MainNavigatorParamsList>()
 
 export const MainNavigator: FC = () => {
-	const userToken = useSelector<DefaultRootState>((state) => state.auth.token)
+	const user = useSelector<
+		DefaultRootState,
+		{ username: string; token: string }
+	>((state) => state.auth)
 
 	return (
 		<Navigator screenOptions={{ headerShown: false }}>
-			{!userToken ? (
+			{!user.token ? (
 				<Screen name='Login' component={Login} />
 			) : (
 				<Screen name='DrawerNavigator' component={DrawerNavigator} />

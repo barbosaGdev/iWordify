@@ -1,4 +1,3 @@
-import { signIn } from '../store/actions/auth'
 import user from './user.json'
 
 export type AuthInput = {
@@ -12,15 +11,17 @@ export type AuthErrors = {
 	message?: string
 }
 
-export const authentication = (authParams: AuthInput): string | number => {
+export const authentication = (
+	authParams: AuthInput
+): { username: string; token: string } | any => {
 	const { credential, password } = authParams
 
 	const validCredential =
 		credential === user.email || credential === user.username
 
 	if (!validCredential || password !== user.password) {
-		return 401
+		return false
 	} else {
-		return 'newJwtToken'
+		return { username: user.username, token: 'fakeJwtToken' }
 	}
 }

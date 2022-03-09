@@ -31,10 +31,10 @@ export const Login: FC = () => {
 	}
 
 	const handleSubmit = () => {
-		const userToken = authentication(authInput)
+		const user = authentication(authInput)
 
-		if (userToken !== 401) {
-			dispatch(signIn(userToken.toString()))
+		if (user) {
+			dispatch(signIn(user.username, user.token))
 		} else {
 			setErrors({
 				status: 401,

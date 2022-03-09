@@ -2,10 +2,12 @@ import { Action } from '../action.type'
 import { AuthActions } from '../actionTypes/auth'
 
 export interface AuthState {
+	username: string
 	token: string
 }
 
 export const initialState: AuthState = {
+	username: '',
 	token: ''
 }
 
@@ -17,6 +19,7 @@ export default (
 		case AuthActions.SIGN_IN:
 			return {
 				...state,
+				username: payload.username,
 				token: payload.token
 			}
 		case AuthActions.SIGN_OUT:

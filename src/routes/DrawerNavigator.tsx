@@ -6,8 +6,10 @@ import {
 	DrawerItemList
 } from '@react-navigation/drawer'
 import { Home, Bookmarks, Word } from '../screens'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { signOut } from '../store/actions/auth'
+import { DefaultRootState } from '../store'
+import { Text } from 'react-native'
 
 export type DrawerNavigatorParamsList = {
 	Home: undefined
@@ -24,6 +26,11 @@ const { Navigator, Screen } = createDrawerNavigator<DrawerNavigatorParamsList>()
 export const DrawerNavigator: FC = () => {
 	const dispatch = useDispatch()
 
+	const user = useSelector<
+		DefaultRootState,
+		{ username: string; token: string }
+	>((state) => state.auth)
+
 	return (
 		<Navigator
 			screenOptions={{
@@ -35,6 +42,9 @@ export const DrawerNavigator: FC = () => {
 				headerTitleStyle: {
 					color: 'white'
 				},
+				headerRight: () => (
+					<Text style={{ color: 'white', fontSize: 12 }}>{user.username}</Text>
+				),
 				headerTintColor: 'white',
 				drawerStyle: {
 					backgroundColor: 'darkblue'

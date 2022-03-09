@@ -17,7 +17,7 @@ export const ListItem: FC<ItemProps> = ({ item, seeAboutWord }) => {
 	return (
 		<View style={styles.listItem}>
 			<Text>{item}</Text>
-			<View>
+			<View style={styles.icons}>
 				<TouchableOpacity onPress={() => onBookmarkPress(item)}>
 					<Icon name='star' size={18} />
 				</TouchableOpacity>
