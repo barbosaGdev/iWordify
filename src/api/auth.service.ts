@@ -6,18 +6,20 @@ export type AuthInput = {
 	password: string
 }
 
-export const authentication = (authParams: AuthInput): string | null => {
+export type AuthErrors = {
+	status?: number
+	field?: string
+	message?: string
+}
+
+export const authentication = (authParams: AuthInput): string | number => {
 	const { credential, password } = authParams
 
 	const validCredential =
 		credential === user.email || credential === user.username
 
-	if (!validCredential) {
-		console.log('Wrong crendential')
-		return null
-	} else if (password !== user.password) {
-		console.log('Unauthorized')
-		return null
+	if (!validCredential || password !== user.password) {
+		return 401
 	} else {
 		return 'newJwtToken'
 	}

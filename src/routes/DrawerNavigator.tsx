@@ -7,8 +7,6 @@ import {
 } from '@react-navigation/drawer'
 import { Home, Search, Rate } from '../screens'
 import { useDispatch } from 'react-redux'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import { Text } from 'react-native'
 import { signOut } from '../store/actions/auth'
 
 export type DrawerNavigatorParamsList = {

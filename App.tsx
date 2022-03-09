@@ -12,18 +12,15 @@ import { NavigationContainer } from '@react-navigation/native'
 import { MainNavigator } from './src/routes'
 import { StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
-import { persistor, store } from './src/store'
-import { PersistGate } from 'redux-persist/integration/react'
+import { store } from './src/store'
 
 const App = () => {
 	return (
 		<Provider store={store}>
-			<PersistGate persistor={persistor}>
-				<NavigationContainer>
-					<StatusBar barStyle={'dark-content'} />
-					<MainNavigator />
-				</NavigationContainer>
-			</PersistGate>
+			<NavigationContainer>
+				<StatusBar barStyle={'dark-content'} />
+				<MainNavigator />
+			</NavigationContainer>
 		</Provider>
 	)
 }
