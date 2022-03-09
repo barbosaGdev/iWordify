@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Animated } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { AuthErrors, AuthInput, authentication } from '../../api/auth.service'
 import { signIn } from '../../store/actions/auth'
