@@ -13,12 +13,16 @@ export type ItemProps = {
 	seeAboutWord: (word: string) => void
 }
 
-export const RenderItem: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
+export const RenderItem: FC<ItemProps> = ({
+	item,
+	dimensions,
+	seeAboutWord
+}) => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		dispatch(fetchWordsByVowel(item))
-	}, [item])
+	}, [])
 
 	const words = useSelector<DefaultRootState, string[]>(
 		(state) => state.dictionary.words

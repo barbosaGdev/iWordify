@@ -15,6 +15,7 @@ export default (
 ): DictionaryState => {
 	switch (type) {
 		case DictionaryActions.FETCH_WORDS_BY_VOWEL:
+			console.log('here reducer', payload.words)
 			return {
 				...state,
 				words: payload.words

@@ -1,16 +1,9 @@
-import { Action } from '../action.type'
 import { DictionaryActions } from '../actionTypes/dictionary'
-import * as dictionaryService from '../../api/dictionary.service'
+import * as API from '../../api/dictionary'
 
-export const fetchWordsByVowel = (
-	vowel?: string
-): Action<DictionaryActions> => {
-	const words = dictionaryService.getWordsByVowel()
-
-	return {
+export const fetchWordsByVowel = (vowel: string) => async (dispatch: any) => {
+	dispatch({
 		type: DictionaryActions.FETCH_WORDS_BY_VOWEL,
-		payload: {
-			words
-		}
-	}
+		words: await API.getWordsByVowel(vowel)
+	})
 }

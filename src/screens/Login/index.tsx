@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { AuthErrors, AuthInput, authentication } from '../../api/auth.service'
+import { AuthErrors, AuthInput, authentication } from '../../api/auth'
 import { signIn } from '../../store/actions/auth'
 import styles from './styles'
 
