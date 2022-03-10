@@ -15,14 +15,14 @@ export default (
 ): BookmarkState => {
 	switch (type) {
 		case BookmarkActions.ADD_BOOKMARK:
-			state.bookmarks.push(payload.newWord)
-
 			return {
-				...state
+				...state,
+				bookmarks: [...state.bookmarks, payload.newWord]
 			}
 		case BookmarkActions.FETCH_BOOKMARKS:
 			return {
-				...state
+				...state,
+				bookmarks: state.bookmarks
 			}
 		default:
 			return state

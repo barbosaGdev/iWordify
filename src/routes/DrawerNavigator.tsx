@@ -9,7 +9,8 @@ import { Home, Bookmarks, Word } from '../screens'
 import { useDispatch, useSelector } from 'react-redux'
 import { signOut } from '../store/actions/auth'
 import { DefaultRootState } from '../store'
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 export type DrawerNavigatorParamsList = {
 	Home: undefined
@@ -43,7 +44,17 @@ export const DrawerNavigator: FC = () => {
 					color: 'white'
 				},
 				headerRight: () => (
-					<Text style={{ color: 'white', fontSize: 12 }}>{user.username}</Text>
+					<View style={{ flexDirection: 'row', alignItems: 'center' }}>
+						<Icon
+							name='person'
+							size={12}
+							color='white'
+							style={{ marginRight: 4 }}
+						/>
+						<Text style={{ color: 'white', fontSize: 12, marginRight: 8 }}>
+							{user.username}
+						</Text>
+					</View>
 				),
 				headerTintColor: 'white',
 				drawerStyle: {
