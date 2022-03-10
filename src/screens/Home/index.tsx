@@ -1,18 +1,22 @@
-import React, { FC, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { View, FlatList, LayoutRectangle, ViewToken } from 'react-native'
 import { Menu } from '../../components/Menu'
 import viewabilityConfig from '../../utils/viewabilityConfig'
 import { RenderItem } from './elements/RenderItem'
 import styles from './styles'
+import { useDispatch } from 'react-redux'
+import { fetchWordsByVowel } from '../../store/actions/dictionary'
 
-const vowels = ['A', 'E', 'I', 'O', 'U']
+export const vowels = ['A', 'E', 'I', 'O', 'U']
 
 export const Home: FC = () => {
 	const [indexPage, setIndexPage] = useState<number | null>(0)
 	const [dimensions, setDimensions] = useState<Partial<LayoutRectangle>>({})
 
 	const { navigate } = useNavigation()
+
+	const dispatch = useDispatch()
 
 	const seeAboutWord = (word: string): void => {
 		//@ts-ignore
@@ -35,6 +39,7 @@ export const Home: FC = () => {
 		const [actualPostBeingShown] = changed
 		const index = actualPostBeingShown.index
 
+		dispatch(fetchWordsByVowel(vowels[index!]))
 		setIndexPage(index)
 	}
 

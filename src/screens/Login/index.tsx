@@ -74,10 +74,6 @@ export const Login: FC = () => {
 			{errors?.status === 401 && (
 				<Text style={styles.errorText}>{errors.message}</Text>
 			)}
-
-			<View>
-				<Text>Use fingerprint</Text>
-			</View>
 		</View>
 	)
 }

@@ -1,9 +1,8 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { FlatList, LayoutRectangle, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { ListItem } from '../../../components'
 import { DefaultRootState } from '../../../store'
-import { fetchWordsByVowel } from '../../../store/actions/dictionary'
 import styles from '../styles'
 
 export type ItemProps = {
@@ -18,12 +17,6 @@ export const RenderItem: FC<ItemProps> = ({
 	dimensions,
 	seeAboutWord
 }) => {
-	const dispatch = useDispatch()
-
-	useEffect(() => {
-		dispatch(fetchWordsByVowel(item))
-	}, [])
-
 	const words = useSelector<DefaultRootState, string[]>(
 		(state) => state.dictionary.words
 	)
