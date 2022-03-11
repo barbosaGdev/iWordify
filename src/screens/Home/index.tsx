@@ -7,16 +7,34 @@ import { RenderItem } from './elements/RenderItem'
 import styles from './styles'
 import { useDispatch } from 'react-redux'
 import { fetchWordsByVowel } from '../../store/actions/dictionary'
+import { DictionaryState } from '../../store/reducers/dictionary'
 
-export const vowels = ['A', 'E', 'I', 'O', 'U']
+export type VowelsEntity = {
+	vowel: string
+	vowelsState: keyof DictionaryState
+}
+
+export const vowels: VowelsEntity[] = [
+	{ vowel: 'A', vowelsState: 'wordsStartingWithA' },
+	{ vowel: 'E', vowelsState: 'wordsStartingWithE' },
+	{ vowel: 'I', vowelsState: 'wordsStartingWithI' },
+	{ vowel: 'O', vowelsState: 'wordsStartingWithO' },
+	{ vowel: 'U', vowelsState: 'wordsStartingWithU' }
+]
 
 export const Home: FC = () => {
 	const [indexPage, setIndexPage] = useState<number | null>(0)
 	const [dimensions, setDimensions] = useState<Partial<LayoutRectangle>>({})
 
-	const { navigate } = useNavigation()
-
 	const dispatch = useDispatch()
+
+	useEffect(() => {
+		vowels.forEach(({ vowel, vowelsState }) => {
+			dispatch(fetchWordsByVowel(vowel, vowelsState))
+		})
+	}, [])
+
+	const { navigate } = useNavigation()
 
 	const seeAboutWord = (word: string): void => {
 		//@ts-ignore
@@ -39,7 +57,6 @@ export const Home: FC = () => {
 		const [actualPostBeingShown] = changed
 		const index = actualPostBeingShown.index
 
-		dispatch(fetchWordsByVowel(vowels[index!]))
 		setIndexPage(index)
 	}
 
@@ -75,7 +92,7 @@ export const Home: FC = () => {
 				)}
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
-				keyExtractor={(item) => item}
+				keyExtractor={(item) => item.vowel}
 				getItemLayout={getItemLayout}
 				horizontal
 			/>

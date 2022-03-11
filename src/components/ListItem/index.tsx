@@ -7,7 +7,10 @@ import { ItemProps } from '../../screens/Home/elements/RenderItem'
 import { useDispatch } from 'react-redux'
 import { addBookmark } from '../../store/actions/bookmark'
 
-export const ListItem: FC<ItemProps> = ({ item, seeAboutWord }) => {
+export const ListItem: FC<{
+	item: string
+	seeAboutWord: (word: string) => void
+}> = ({ item, seeAboutWord }) => {
 	const dispatch = useDispatch()
 
 	const onBookmarkPress = (word: string) => {

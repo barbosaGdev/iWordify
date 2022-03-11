@@ -2,11 +2,19 @@ import { Action } from '../action.type'
 import { DictionaryActions } from '../actionTypes/dictionary'
 
 export interface DictionaryState {
-	words: string[]
+	wordsStartingWithA: string[]
+	wordsStartingWithE: string[]
+	wordsStartingWithI: string[]
+	wordsStartingWithO: string[]
+	wordsStartingWithU: string[]
 }
 
 export const initialState: DictionaryState = {
-	words: []
+	wordsStartingWithA: [],
+	wordsStartingWithE: [],
+	wordsStartingWithI: [],
+	wordsStartingWithO: [],
+	wordsStartingWithU: []
 }
 
 export default (
@@ -17,7 +25,7 @@ export default (
 		case DictionaryActions.FETCH_WORDS_BY_VOWEL:
 			return {
 				...state,
-				words: payload.words
+				[payload.vowelsState]: payload.words
 			}
 		default:
 			return state
