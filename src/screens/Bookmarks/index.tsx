@@ -19,8 +19,6 @@ export const Bookmarks: FC = () => {
 		(state: { bookmark: BookmarkState }) => state.bookmark.bookmarks
 	)
 
-	console.log(bookmarks)
-
 	return (
 		<View style={styles.container}>
 			<Text>Bookmarks</Text>
