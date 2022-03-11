@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import { View, FlatList, LayoutRectangle, ViewToken } from 'react-native'
 import { Menu } from '../../components/Menu'
 import viewabilityConfig from '../../utils/viewabilityConfig'
-import { RenderItem } from './elements/RenderItem'
+import RenderItem, { ItemProps } from './elements/RenderItem'
 import styles from './styles'
 import { useDispatch } from 'react-redux'
 import { fetchWordsByVowel } from '../../store/actions/dictionary'
@@ -64,6 +64,14 @@ export const Home: FC = () => {
 		{ onViewableItemsChanged, viewabilityConfig }
 	])
 
+	const renderItem: FC<{ item: VowelsEntity; index: number }> = (props) => (
+		<RenderItem
+			{...props}
+			dimensions={dimensions}
+			seeAboutWord={seeAboutWord}
+		/>
+	)
+
 	return (
 		<View
 			onLayout={({ nativeEvent: { layout } }) => {
@@ -83,13 +91,7 @@ export const Home: FC = () => {
 				ref={flatListRef}
 				viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
 				pagingEnabled
-				renderItem={(props) => (
-					<RenderItem
-						{...props}
-						dimensions={dimensions}
-						seeAboutWord={seeAboutWord}
-					/>
-				)}
+				renderItem={renderItem}
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
 				keyExtractor={(item) => item.vowel}

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, memo } from 'react'
 import { LayoutRectangle } from 'react-native'
 import { VowelsEntity } from '../..'
 import { ListA, ListE, ListI, ListO, ListU } from './elements'
@@ -9,8 +9,7 @@ export type ItemProps = {
 	dimensions?: Partial<LayoutRectangle>
 	seeAboutWord: (word: string) => void
 }
-
-export const RenderItem: FC<ItemProps> = (props) => {
+const RenderItem: FC<ItemProps> = (props) => {
 	const lists: Record<string, JSX.Element> = {
 		A: <ListA {...props} />,
 		E: <ListE {...props} />,
@@ -21,3 +20,5 @@ export const RenderItem: FC<ItemProps> = (props) => {
 
 	return lists[props.item.vowel] || null
 }
+
+export default memo(RenderItem)

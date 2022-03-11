@@ -3,7 +3,6 @@ import { Text, View } from 'react-native'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/AntDesign'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { ItemProps } from '../../screens/Home/elements/RenderItem'
 import { useDispatch } from 'react-redux'
 import { addBookmark } from '../../store/actions/bookmark'
 
