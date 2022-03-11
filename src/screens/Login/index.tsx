@@ -1,9 +1,15 @@
 import React, { FC, useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { AuthErrors, AuthInput, authentication } from '../../api/auth'
+import { CredentialInput } from '../../components/CredentialInput'
+import { PasswordInput } from '../../components/PasswordInput'
 import { signIn } from '../../store/actions/auth'
 import styles from './styles'
+
+export type InputProps = {
+	handleChange: (field: string, text: string) => void
+}
 
 export const Login: FC = () => {
 	const [errors, setErrors] = useState<AuthErrors>()
@@ -47,20 +53,14 @@ export const Login: FC = () => {
 		<View style={styles.container}>
 			<View style={styles.contentContainer}>
 				<Text style={styles.title}>Log In iWordify</Text>
-				<TextInput
-					onChangeText={(text) => handleChange('credential', text)}
-					style={styles.inputs}
-					placeholder='E-mail or username'
-				/>
+
+				<CredentialInput handleChange={handleChange} />
+
 				{errors?.field === 'credential' && (
 					<Text style={styles.helperText}>{errors?.message}</Text>
 				)}
-				<TextInput
-					secureTextEntry
-					onChangeText={(text) => handleChange('password', text)}
-					style={styles.inputs}
-					placeholder='Password'
-				/>
+
+				<PasswordInput handleChange={handleChange} />
 
 				{errors?.field === 'password' && (
 					<Text style={styles.helperText}>{errors?.message}</Text>

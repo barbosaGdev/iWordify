@@ -18,6 +18,8 @@ export default StyleSheet.create({
 	},
 	resultList: {},
 	itemSeparator: {
+		borderWidth: 1,
+		borderColor: '#ccc',
 		marginVertical: 8
 	}
 })
