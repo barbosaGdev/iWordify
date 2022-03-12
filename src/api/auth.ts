@@ -1,3 +1,5 @@
+import { store } from '../store'
+import { signOut } from '../store/actions/auth'
 import user from './user.json'
 
 export type AuthInput = {

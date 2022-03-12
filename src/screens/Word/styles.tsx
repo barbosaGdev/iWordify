@@ -8,5 +8,10 @@ export default StyleSheet.create({
 		padding: 12,
 		borderBottomWidth: 1,
 		borderColor: '#ccc'
+	},
+	subtitle: {
+		fontWeight: 'bold',
+		fontSize: 16,
+		color: 'darkblue'
 	}
 })

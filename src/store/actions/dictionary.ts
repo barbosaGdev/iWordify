@@ -22,3 +22,7 @@ export const fetchWord = (word: string) => async (dispatch: any) => {
 		}
 	})
 }
+
+export const resetWordState = () => ({
+	type: DictionaryActions.RESET_WORD_STATE
+})

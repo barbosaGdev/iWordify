@@ -35,6 +35,11 @@ export default (
 				...state,
 				word: payload.word
 			}
+		case DictionaryActions.RESET_WORD_STATE:
+			return {
+				...state,
+				word: []
+			}
 		default:
 			return state
 	}
