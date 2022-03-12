@@ -13,3 +13,12 @@ export const fetchWordsByVowel =
 			}
 		})
 	}
+
+export const fetchWord = (word: string) => async (dispatch: any) => {
+	dispatch({
+		type: DictionaryActions.FETCH_WORD,
+		payload: {
+			word: await API.getWord(word)
+		}
+	})
+}

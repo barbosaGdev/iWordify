@@ -11,6 +11,13 @@ export type PaginationArgs = {
 	page: number
 }
 
+export type WordBody = {
+	definition: string
+	partOfSpeech: string
+	synonyms: string[]
+	typeOf: string[]
+}
+
 export const getWordsByVowel = async (
 	vowel: string,
 	paginationArgs?: PaginationArgs
@@ -25,4 +32,12 @@ export const getWordsByVowel = async (
 	})
 
 	return response.data.results.data
+}
+
+export const getWord = async (word: string) => {
+	const response = await axios.get(`${API_URL}/${word}`, {
+		headers
+	})
+
+	return response.data.results
 }

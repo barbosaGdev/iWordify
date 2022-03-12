@@ -1,3 +1,4 @@
+import { WordBody } from '../../api/dictionary'
 import { Action } from '../action.type'
 import { DictionaryActions } from '../actionTypes/dictionary'
 
@@ -7,6 +8,7 @@ export interface DictionaryState {
 	wordsStartingWithI: string[]
 	wordsStartingWithO: string[]
 	wordsStartingWithU: string[]
+	word: WordBody[]
 }
 
 export const initialState: DictionaryState = {
@@ -14,7 +16,8 @@ export const initialState: DictionaryState = {
 	wordsStartingWithE: [],
 	wordsStartingWithI: [],
 	wordsStartingWithO: [],
-	wordsStartingWithU: []
+	wordsStartingWithU: [],
+	word: []
 }
 
 export default (
@@ -26,6 +29,11 @@ export default (
 			return {
 				...state,
 				[payload.vowelsState]: payload.words
+			}
+		case DictionaryActions.FETCH_WORD:
+			return {
+				...state,
+				word: payload.word
 			}
 		default:
 			return state
