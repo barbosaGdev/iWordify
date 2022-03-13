@@ -45,7 +45,11 @@ export const Bookmarks: FC = () => {
 				data={bookmarks}
 				ListEmptyComponent={ListEmptyComponent}
 				renderItem={(props) => (
-					<ListItem {...props} seeAboutWord={seeAboutWord} isBookmark/>
+					<ListItem
+						{...props}
+						seeAboutWord={seeAboutWord}
+						isBookmark={bookmarks.includes(props.item)}
+					/>
 				)}
 				ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
 			/>

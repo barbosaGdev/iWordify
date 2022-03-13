@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/AntDesign'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addBookmark, removeBookmark } from '../../store/actions/bookmark'
 import { BookmarkActions } from '../../store/actionTypes/bookmark'
 
@@ -15,11 +15,7 @@ export const ListItem: FC<{
 	const dispatch = useDispatch()
 
 	const onBookmarkPress = (word: string, action: string) => {
-		dispatch(
-			action === BookmarkActions.ADD_BOOKMARK
-				? addBookmark(word)
-				: removeBookmark(word)
-		)
+		dispatch(!isBookmark ? addBookmark(word) : removeBookmark(word))
 	}
 
 	return (
@@ -32,13 +28,13 @@ export const ListItem: FC<{
 							onBookmarkPress(item, BookmarkActions.REMOVE_BOOKMARK)
 						}
 					>
-						<Icon name='close' size={18} color={'gray'} />
+						<Icon name='star' size={18} color={'orange'} />
 					</TouchableOpacity>
 				) : (
 					<TouchableOpacity
 						onPress={() => onBookmarkPress(item, BookmarkActions.ADD_BOOKMARK)}
 					>
-						<Icon name='star' size={18} color={'orange'} />
+						<Icon name='staro' size={18} color={'orange'} />
 					</TouchableOpacity>
 				)}
 

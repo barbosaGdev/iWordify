@@ -3,12 +3,10 @@ import { BookmarkActions } from '../actionTypes/bookmark'
 
 export interface BookmarkState {
 	bookmarks: string[]
-	bookmarkExist: boolean
 }
 
 export const initialState: BookmarkState = {
-	bookmarks: [],
-	bookmarkExist: false
+	bookmarks: []
 }
 
 export default (
@@ -28,11 +26,7 @@ export default (
 					(item) => item !== payload.removedWord
 				)
 			}
-		case BookmarkActions.FETCH_BOOKMARK:
-			return {
-				...state,
-				bookmarkExist: state.bookmarks.includes(payload.word)
-			}
+
 		case BookmarkActions.FETCH_BOOKMARKS:
 			return {
 				...state,

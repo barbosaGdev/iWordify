@@ -15,13 +15,6 @@ export const removeBookmark = (word: string): Action<BookmarkActions> => ({
 	}
 })
 
-export const fetchBookmark = (word: string): Action<BookmarkActions> => ({
-	type: BookmarkActions.FETCH_BOOKMARK,
-	payload: {
-		word
-	}
-})
-
 export const fetchBookmarks = () => ({
 	type: BookmarkActions.FETCH_BOOKMARKS
 })
