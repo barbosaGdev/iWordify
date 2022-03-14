@@ -1,14 +1,22 @@
-import React, { FC } from 'react'
-import { FlatList, View } from 'react-native'
-import { useSelector } from 'react-redux'
+import React, { FC, useState } from 'react'
+import { FlatList, Text, View } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import { ListItem } from '../../../../../components'
 import { DefaultRootState } from '../../../../../store'
 import styles from '../../../styles'
 import { ItemProps } from '..'
 import { BookmarkState } from '../../../../../store/reducers/bookmark'
+import { fetchWordsByVowel } from '../../../../../store/actions/dictionary'
+import { ResponseWordsAPI } from '../../../../../store/reducers/dictionary'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export const ListA: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
-	const wordsStartingWithA = useSelector<DefaultRootState, string[]>(
+	const dispatch = useDispatch()
+
+	const {
+		query: { limit },
+		results: { data, total }
+	} = useSelector<DefaultRootState, ResponseWordsAPI>(
 		(state) => state.dictionary.wordsStartingWithA
 	)
 
@@ -19,7 +27,7 @@ export const ListA: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
 	return (
 		<View style={{ width: dimensions?.width }}>
 			<FlatList
-				data={wordsStartingWithA}
+				data={data}
 				renderItem={(props) => (
 					<ListItem
 						{...props}
@@ -31,6 +39,20 @@ export const ListA: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
 				ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
+				ListFooterComponent={() => (
+					<TouchableOpacity
+						style={{ alignItems: 'center' }}
+						onPress={() => {
+							dispatch(
+								fetchWordsByVowel(item.vowel, item.vowelsState, {
+									limit: 20
+								})
+							)
+						}}
+					>
+						<Text>Get more 10</Text>
+					</TouchableOpacity>
+				)}
 			/>
 		</View>
 	)

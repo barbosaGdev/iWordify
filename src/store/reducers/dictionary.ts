@@ -2,21 +2,76 @@ import { WordBody } from '../../api/dictionary'
 import { Action } from '../action.type'
 import { DictionaryActions } from '../actionTypes/dictionary'
 
+export type ResponseWordsAPI = {
+	query: {
+		page: number
+		limit: number
+	}
+	results: {
+		data: string[]
+		total: number
+	}
+}
 export interface DictionaryState {
-	wordsStartingWithA: string[]
-	wordsStartingWithE: string[]
-	wordsStartingWithI: string[]
-	wordsStartingWithO: string[]
-	wordsStartingWithU: string[]
+	wordsStartingWithA: ResponseWordsAPI
+	wordsStartingWithE: ResponseWordsAPI
+	wordsStartingWithI: ResponseWordsAPI
+	wordsStartingWithO: ResponseWordsAPI
+	wordsStartingWithU: ResponseWordsAPI
 	word: WordBody[]
 }
 
 export const initialState: DictionaryState = {
-	wordsStartingWithA: [],
-	wordsStartingWithE: [],
-	wordsStartingWithI: [],
-	wordsStartingWithO: [],
-	wordsStartingWithU: [],
+	wordsStartingWithA: {
+		query: {
+			page: 1,
+			limit: 10
+		},
+		results: {
+			data: [],
+			total: 0
+		}
+	},
+	wordsStartingWithE: {
+		query: {
+			page: 1,
+			limit: 10
+		},
+		results: {
+			data: [],
+			total: 0
+		}
+	},
+	wordsStartingWithI: {
+		query: {
+			page: 1,
+			limit: 10
+		},
+		results: {
+			data: [],
+			total: 0
+		}
+	},
+	wordsStartingWithO: {
+		query: {
+			page: 1,
+			limit: 10
+		},
+		results: {
+			data: [],
+			total: 0
+		}
+	},
+	wordsStartingWithU: {
+		query: {
+			page: 1,
+			limit: 10
+		},
+		results: {
+			data: [],
+			total: 0
+		}
+	},
 	word: []
 }
 

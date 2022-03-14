@@ -7,8 +7,8 @@ const headers = {
 }
 
 export type PaginationArgs = {
-	limit: number
-	page: number
+	limit?: number
+	page?: number
 }
 
 export type WordBody = {
@@ -25,13 +25,12 @@ export const getWordsByVowel = async (
 	const response = await axios.get(`${API_URL}/`, {
 		headers,
 		params: {
-			letterPattern: `^${vowel.toLowerCase()}.{2,}$`,
-			limit: paginationArgs?.limit || 10,
-			page: paginationArgs?.page || 1
+			letterPattern: `^${vowel.toLowerCase()}`,
+			limit: paginationArgs?.limit || 10
 		}
 	})
 
-	return response.data.results.data
+	return response.data
 }
 
 export const getWord = async (word: string) => {
