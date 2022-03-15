@@ -9,6 +9,7 @@ import { BookmarkState } from '../../../../../store/reducers/bookmark'
 import { fetchWordsByVowel } from '../../../../../store/actions/dictionary'
 import { ResponseWordsAPI } from '../../../../../store/reducers/dictionary'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import ListFooterComponent from './ListFooterComponent'
 
 export const ListA: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
 	const dispatch = useDispatch()
@@ -40,18 +41,16 @@ export const ListA: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
 				ListFooterComponent={() => (
-					<TouchableOpacity
-						style={{ alignItems: 'center' }}
-						onPress={() => {
+					<ListFooterComponent
+						show={!data || total <= data.length}
+						fetchMore={() => {
 							dispatch(
 								fetchWordsByVowel(item.vowel, item.vowelsState, {
-									limit: 20
+									limit
 								})
 							)
 						}}
-					>
-						<Text>Get more 10</Text>
-					</TouchableOpacity>
+					/>
 				)}
 			/>
 		</View>

@@ -81,9 +81,24 @@ export default (
 ): DictionaryState => {
 	switch (type) {
 		case DictionaryActions.FETCH_WORDS_BY_VOWEL:
+			const currentLimit = Number(
+				(
+					state[
+						payload.vowelsState as keyof DictionaryState
+					] as ResponseWordsAPI
+				).query.limit
+			)
+
 			return {
 				...state,
-				[payload.vowelsState]: payload.words
+				[payload.vowelsState]: {
+					...payload.words,
+					results: { ...payload.words.results, total: 50 },
+					query: {
+						...payload.words.query,
+						limit: currentLimit + payload.limit
+					}
+				}
 			}
 		case DictionaryActions.FETCH_WORD:
 			return {

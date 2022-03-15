@@ -1,14 +1,22 @@
 import React, { FC } from 'react'
-import { FlatList, View } from 'react-native'
-import { useSelector } from 'react-redux'
+import { FlatList, Text, TouchableOpacity, View } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import { ListItem } from '../../../../../components'
 import { DefaultRootState } from '../../../../../store'
 import styles from '../../../styles'
 import { ItemProps } from '..'
 import { BookmarkState } from '../../../../../store/reducers/bookmark'
+import { fetchWordsByVowel } from '../../../../../store/actions/dictionary'
+import { ResponseWordsAPI } from '../../../../../store/reducers/dictionary'
+import ListFooterComponent from './ListFooterComponent'
 
 export const ListU: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
-	const wordsStartingWithU = useSelector<DefaultRootState, string[]>(
+	const dispatch = useDispatch()
+
+	const {
+		query: { limit },
+		results: { data, total }
+	} = useSelector<DefaultRootState, ResponseWordsAPI>(
 		(state) => state.dictionary.wordsStartingWithU
 	)
 
@@ -19,7 +27,7 @@ export const ListU: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
 	return (
 		<View style={{ width: dimensions?.width }}>
 			<FlatList
-				data={wordsStartingWithU}
+				data={data}
 				renderItem={(props) => (
 					<ListItem
 						{...props}
@@ -31,6 +39,18 @@ export const ListU: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
 				ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
+				ListFooterComponent={() => (
+					<ListFooterComponent
+						show={!data || total <= data.length}
+						fetchMore={() => {
+							dispatch(
+								fetchWordsByVowel(item.vowel, item.vowelsState, {
+									limit
+								})
+							)
+						}}
+					/>
+				)}
 			/>
 		</View>
 	)

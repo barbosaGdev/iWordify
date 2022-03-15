@@ -13,7 +13,8 @@ export const fetchWordsByVowel =
 			type: DictionaryActions.FETCH_WORDS_BY_VOWEL,
 			payload: {
 				words: await API.getWordsByVowel(vowel, paginationArgs),
-				vowelsState
+				vowelsState,
+				limit: paginationArgs?.limit || 10
 			}
 		})
 	}
