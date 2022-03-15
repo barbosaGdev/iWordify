@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "marginVertical": 32,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000",
+          "fontSize": 24,
+          "fontWeight": "bold",
+          "marginVertical": 24,
+        }
+      }
+    >
+      Log In iWordify
+    </Text>
+    <View
+      style={
+        Object {
+          "borderColor": "gray",
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "marginTop": 12,
+          "paddingHorizontal": 12,
+          "width": 350,
+        }
+      }
+    >
+      <TextInput
+        onChangeText={[Function]}
+        placeholder="E-mail or username"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "borderColor": "gray",
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginTop": 12,
+          "paddingHorizontal": 12,
+          "width": 350,
+        }
+      }
+    >
+      <TextInput
+        onChangeText={[Function]}
+        placeholder="Password"
+        secureTextEntry={true}
+      />
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 20,
+              },
+              undefined,
+              Object {
+                "fontFamily": "anticon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "darkblue",
+          "marginTop": 12,
+          "opacity": 1,
+          "padding": 8,
+          "width": 350,
+        }
+      }
+      testID="LoginButton"
+    >
+      <Text
+        style={
+          Object {
+            "color": "white",
+            "textAlign": "center",
+          }
+        }
+      >
+        Access
+      </Text>
+    </View>
+  </View>
+</View>
+`;

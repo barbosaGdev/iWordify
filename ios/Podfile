@@ -14,6 +14,8 @@ target 'iWordify' do
 
   pod 'TouchID', :path => '../node_modules/react-native-touch-id'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'iWordifyTests' do
     inherit! :complete
     # Pods for testing

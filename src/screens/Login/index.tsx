@@ -66,7 +66,11 @@ export const Login: FC = () => {
 					<Text style={styles.helperText}>{errors?.message}</Text>
 				)}
 
-				<TouchableOpacity style={styles.button} onPress={validateForm}>
+				<TouchableOpacity
+					testID='LoginButton'
+					style={styles.button}
+					onPress={validateForm}
+				>
 					<Text style={styles.buttonText}>Access</Text>
 				</TouchableOpacity>
 			</View>
