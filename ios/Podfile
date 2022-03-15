@@ -12,6 +12,8 @@ target 'iWordify' do
     :hermes_enabled => false
   )
 
+  pod 'TouchID', :path => '../node_modules/react-native-touch-id'
+
   target 'iWordifyTests' do
     inherit! :complete
     # Pods for testing

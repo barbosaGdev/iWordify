@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import {
 	createDrawerNavigator,
+	DrawerContentComponentProps,
 	DrawerContentScrollView,
 	DrawerItem,
 	DrawerItemList
@@ -11,6 +12,7 @@ import { signOut } from '../store/actions/auth'
 import { DefaultRootState } from '../store'
 import { Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import TouchID from 'react-native-touch-id'
 
 export type DrawerNavigatorParamsList = {
 	Home: undefined
@@ -31,6 +33,19 @@ export const DrawerNavigator: FC = () => {
 		DefaultRootState,
 		{ username: string; token: string }
 	>((state) => state.auth)
+
+	const onPressBookmarks = ({ navigation }: DrawerContentComponentProps) => {
+		const config = {
+			sensorDescription: 'To access your bookmarks!',
+			sensorErrorDescription: 'Unauthorized'
+		}
+
+		TouchID.authenticate('Bookmarks', config)
+			.then(() => {
+				navigation.navigate('Bookmarks')
+			})
+			.catch(() => {})
+	}
 
 	return (
 		<Navigator
@@ -67,6 +82,14 @@ export const DrawerNavigator: FC = () => {
 			drawerContent={(props) => (
 				<DrawerContentScrollView {...props}>
 					<DrawerItemList {...props} />
+
+					<DrawerItem
+						inactiveTintColor='white'
+						activeTintColor='white'
+						label='Bookmarks'
+						onPress={() => onPressBookmarks(props)}
+					/>
+
 					<DrawerItem
 						inactiveTintColor='white'
 						activeTintColor='white'
@@ -77,7 +100,15 @@ export const DrawerNavigator: FC = () => {
 			)}
 		>
 			<Screen name='Home' component={Home} />
-			<Screen name='Bookmarks' component={Bookmarks} />
+			<Screen
+				name='Bookmarks'
+				component={Bookmarks}
+				options={{
+					drawerLabel: () => null,
+					drawerIcon: () => null,
+					drawerItemStyle: { height: 0, marginTop: -12 }
+				}}
+			/>
 			<Screen
 				name='Word'
 				component={Word}

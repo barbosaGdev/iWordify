@@ -7,14 +7,25 @@
  *
  * @format
  */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { MainNavigator } from './src/routes'
 import { StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
 import { store } from './src/store'
+import TouchID from 'react-native-touch-id'
 
 const App = () => {
+	useEffect(() => {
+		TouchID.isSupported()
+			.then(() => {
+				console.log('TOUCH ID IS WORKING!')
+			})
+			.catch(() => {
+				console.log('TOUCH ID NOT SUPPORTED')
+			})
+	}, [])
+
 	return (
 		<Provider store={store}>
 			<NavigationContainer>

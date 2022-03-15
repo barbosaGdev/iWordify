@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { View, Text, FlatList } from 'react-native'
+import TouchID from 'react-native-touch-id'
 import { useDispatch, useSelector } from 'react-redux'
 import { ListItem } from '../../components'
 import { DefaultRootState } from '../../store'
@@ -10,6 +11,7 @@ import { ListEmptyComponent } from './elements/ListEmptyComponent'
 import styles from './styles'
 
 export const Bookmarks: FC = () => {
+	const [invalidTouchId, setInvalidTouchId] = useState<boolean>(false)
 	const dispatch = useDispatch()
 
 	const { navigate } = useNavigation()
@@ -43,7 +45,9 @@ export const Bookmarks: FC = () => {
 			<FlatList
 				style={{ width: '100%' }}
 				data={bookmarks}
-				ListEmptyComponent={ListEmptyComponent}
+				ListEmptyComponent={() => (
+					<ListEmptyComponent invalidTouchId={invalidTouchId} />
+				)}
 				renderItem={(props) => (
 					<ListItem
 						{...props}
