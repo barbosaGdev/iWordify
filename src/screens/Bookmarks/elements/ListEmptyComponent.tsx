@@ -1,16 +1,10 @@
 import React, { FC } from 'react'
 import { Text, View } from 'react-native'
 
-export const ListEmptyComponent: FC<{ invalidTouchId: boolean }> = ({
-	invalidTouchId
-}) => {
+export const ListEmptyComponent: FC = () => {
 	return (
 		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<Text>
-				{!invalidTouchId
-					? "Don't have any bookmarks"
-					: "You don't have access to this"}
-			</Text>
+			<Text>Don't have any bookmarks</Text>
 		</View>
 	)
 }

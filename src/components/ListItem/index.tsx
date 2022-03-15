@@ -3,18 +3,21 @@ import { Text, View } from 'react-native'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/AntDesign'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addBookmark, removeBookmark } from '../../store/actions/bookmark'
-import { BookmarkActions } from '../../store/actionTypes/bookmark'
 
 export const ListItem: FC<{
 	item: string
-	seeAboutWord: (word: string) => void
+	seeAboutWord: (
+		word: string,
+		onBookmarkPress: (word: string) => void,
+		isBookmark?: boolean
+	) => void
 	isBookmark?: boolean
 }> = ({ item, seeAboutWord, isBookmark }) => {
 	const dispatch = useDispatch()
 
-	const onBookmarkPress = (word: string, action: string) => {
+	const onBookmarkPress = (word: string) => {
 		dispatch(!isBookmark ? addBookmark(word) : removeBookmark(word))
 	}
 
@@ -23,22 +26,18 @@ export const ListItem: FC<{
 			<Text>{item}</Text>
 			<View style={styles.icons}>
 				{isBookmark ? (
-					<TouchableOpacity
-						onPress={() =>
-							onBookmarkPress(item, BookmarkActions.REMOVE_BOOKMARK)
-						}
-					>
+					<TouchableOpacity onPress={() => onBookmarkPress(item)}>
 						<Icon name='star' size={18} color={'orange'} />
 					</TouchableOpacity>
 				) : (
-					<TouchableOpacity
-						onPress={() => onBookmarkPress(item, BookmarkActions.ADD_BOOKMARK)}
-					>
+					<TouchableOpacity onPress={() => onBookmarkPress(item)}>
 						<Icon name='staro' size={18} color={'orange'} />
 					</TouchableOpacity>
 				)}
 
-				<TouchableOpacity onPress={() => seeAboutWord(item)}>
+				<TouchableOpacity
+					onPress={() => seeAboutWord(item, onBookmarkPress, isBookmark)}
+				>
 					<Icon name='eye' size={18} color={'darkblue'} />
 				</TouchableOpacity>
 			</View>

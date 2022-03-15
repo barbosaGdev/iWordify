@@ -7,7 +7,11 @@ export type ItemProps = {
 	item: VowelsEntity
 	index: number
 	dimensions?: Partial<LayoutRectangle>
-	seeAboutWord: (word: string) => void
+	seeAboutWord: (
+		word: string,
+		onBookmarkPress: (word: string) => void,
+		isBookmark?: boolean
+	) => void
 }
 const RenderItem: FC<ItemProps> = (props) => {
 	const lists: Record<string, JSX.Element> = {

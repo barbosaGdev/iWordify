@@ -21,6 +21,8 @@ export type DrawerNavigatorParamsList = {
 	Logout: undefined
 	Word: {
 		word: string
+		onBookmarkPress: (word: string) => void
+		isBookmark?: boolean
 	}
 }
 

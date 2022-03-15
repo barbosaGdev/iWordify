@@ -11,14 +11,17 @@ import { ListEmptyComponent } from './elements/ListEmptyComponent'
 import styles from './styles'
 
 export const Bookmarks: FC = () => {
-	const [invalidTouchId, setInvalidTouchId] = useState<boolean>(false)
 	const dispatch = useDispatch()
 
 	const { navigate } = useNavigation()
 
-	const seeAboutWord = (word: string): void => {
+	const seeAboutWord = (
+		word: string,
+		onBookmarkPress: (word: string) => void,
+		isBookmark?: boolean
+	): void => {
 		//@ts-ignore
-		navigate('Word', { word })
+		navigate('Word', { word, onBookmarkPress, isBookmark })
 	}
 
 	useEffect(() => {
@@ -45,9 +48,7 @@ export const Bookmarks: FC = () => {
 			<FlatList
 				style={{ width: '100%' }}
 				data={bookmarks}
-				ListEmptyComponent={() => (
-					<ListEmptyComponent invalidTouchId={invalidTouchId} />
-				)}
+				ListEmptyComponent={ListEmptyComponent}
 				renderItem={(props) => (
 					<ListItem
 						{...props}

@@ -36,9 +36,13 @@ export const Home: FC = () => {
 
 	const { navigate } = useNavigation()
 
-	const seeAboutWord = (word: string): void => {
+	const seeAboutWord = (
+		word: string,
+		onBookmarkPress: (word: string) => void,
+		isBookmark?: boolean
+	): void => {
 		//@ts-ignore
-		navigate('Word', { word })
+		navigate('Word', { word, onBookmarkPress, isBookmark })
 	}
 
 	const flatListRef = useRef<FlatList>(null)

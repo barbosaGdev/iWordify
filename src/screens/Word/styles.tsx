@@ -13,5 +13,14 @@ export default StyleSheet.create({
 		fontWeight: 'bold',
 		fontSize: 16,
 		color: 'darkblue'
+	},
+	bookmarkButton: {
+		marginTop: 12,
+		backgroundColor: 'darkblue',
+		padding: 8,
+		width: 200,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-around'
 	}
 })
