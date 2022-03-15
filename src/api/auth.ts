@@ -1,6 +1,4 @@
-import { store } from '../store'
-import { signOut } from '../store/actions/auth'
-import user from './user.json'
+import users from './user.json'
 
 export type AuthInput = {
 	credential: string
@@ -18,10 +16,11 @@ export const authentication = (
 ): { username: string; token: string } | any => {
 	const { credential, password } = authParams
 
-	const validCredential =
-		credential === user.email || credential === user.username
+	const user = users.users.find(
+		(user) => user.email === credential || user.username === credential
+	)
 
-	if (!validCredential || password !== user.password) {
+	if (!user || password !== user.password) {
 		return false
 	} else {
 		return { username: user.username, token: 'fakeJwtToken' }

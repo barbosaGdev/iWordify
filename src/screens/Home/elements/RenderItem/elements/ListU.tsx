@@ -1,5 +1,11 @@
 import React, { FC } from 'react'
-import { FlatList, Text, TouchableOpacity, View } from 'react-native'
+import {
+	ActivityIndicator,
+	FlatList,
+	Text,
+	TouchableOpacity,
+	View
+} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { ListItem } from '../../../../../components'
 import { DefaultRootState } from '../../../../../store'
@@ -39,6 +45,7 @@ export const ListU: FC<ItemProps> = ({ item, dimensions, seeAboutWord }) => {
 				ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
+				ListEmptyComponent={() => <ActivityIndicator size={24} />}
 				ListFooterComponent={() => (
 					<ListFooterComponent
 						show={!data || total <= data.length}
